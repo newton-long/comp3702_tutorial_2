@@ -1,5 +1,5 @@
 
-from Node import Node
+from PuzzleNode import Node
 from breadth_first_search import breadth_first_search
 
 if __name__ == '__main__':

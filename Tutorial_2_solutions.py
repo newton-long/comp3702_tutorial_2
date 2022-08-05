@@ -284,8 +284,8 @@ def depth_first_search(init_state, goal_state):
     while st:
         node = st.pop()
         if node == goal_state:
-            print ("We reached the goal, Jolly Good!")
-            break;
+            print ("We reached the goal!")
+            break
         if node not in visited:
             visited.add(node)
 
@@ -347,8 +347,8 @@ def uniform_cost_search(init_state, goal_state):
     while pq:
         node = heapq.heappop(pq)
         if node == goal_state:
-            print ("We reached the goal, Jolly Good!")
-            break;
+            print ("We reached the goal!")
+            break
         if node not in visited:
             visited.add(node)
 
