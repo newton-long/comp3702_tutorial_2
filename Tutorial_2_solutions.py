@@ -226,7 +226,7 @@ while not q.empty():
     node = q.get()
     if node == goal_state:
         print ("We reached the goal, Jolly Good!")
-        break;
+        break
     if node not in visited:
         visited.add(node)
 

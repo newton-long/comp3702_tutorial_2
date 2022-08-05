@@ -20,7 +20,7 @@ class TestPuzzleNode(unittest.TestCase):
         ])
         self.assertEqual(
             ['L', 'U'],
-            node.find_actions()
+            node.actions()
         )
 
     def test_find_actions_top_left(self):
@@ -31,7 +31,7 @@ class TestPuzzleNode(unittest.TestCase):
         ])
         self.assertEqual(
             ['R', 'D'],
-            node.find_actions()
+            node.actions()
         )
 
     def test_find_actions_center(self):
@@ -42,7 +42,7 @@ class TestPuzzleNode(unittest.TestCase):
         ])
         self.assertEqual(
             ['L', 'R', 'U', 'D'],
-            node.find_actions()
+            node.actions()
         )
 
     def test_step_off_grid(self):
@@ -113,3 +113,9 @@ class TestPuzzleNode(unittest.TestCase):
             ],
             node.step('R')
         )
+
+    def test_tuple_equality(self):
+        t1 = ((1, 2, 3), (4, 5, 6), (7, 8, 9))
+        t2 = ((1, 2, 3), (4, 5, 6), (7, 8, 9))
+
+        self.assertTrue(t1 == t2)
