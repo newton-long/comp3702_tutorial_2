@@ -61,7 +61,7 @@ class TestDepthFirstSearch(unittest.TestCase):
             [7, 8, -1]
         ]
         steps = depth_first_search(init_state, goal_state)
-        self.assertEqual(20, len(steps))
+        self.assertEqual(50590, len(steps))
 
     def test_tutorial2a(self):
         init_state = [
@@ -89,7 +89,7 @@ class TestDepthFirstSearch(unittest.TestCase):
             [7, 6, 5]
         ]
         steps = depth_first_search(init_state, goal_state)
-        self.assertEqual(31725, len(steps))
+        self.assertEqual(31724, len(steps))
 
     def test_tutorial2c(self):
         init_state = [

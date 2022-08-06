@@ -13,3 +13,16 @@ The main differences to the other solutions:
 4) Fixes naming conventions and caches some calculations to make the code more readable
 5) __There are unit tests__ - for the PuzzleNode as well as the searches - I am hoping they will help with debugging issues faced by the students
 6) It's faster and uses less memory than the other solutions - __although it is still not good enough to solve the 15-puzzle__ - see the [main.py](main.py)
+
+
+### Running
+[main.py](main.py) can be used for experimentation testing different initial/goal combinations.
+
+    python main.py
+
+### Running Tests
+The tests are in [tests/](tests/) dir and can be either run individually or everything:
+
+    python -m unittest discover -s tests -t tests
+
+The tests cover the `PuzzleNode` a.k.a. the environment as well as the searches and the problems from Q2.2. 
