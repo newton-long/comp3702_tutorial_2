@@ -9,10 +9,8 @@ from node_utils import backtrack_actions, state_to_tuple
 def breadth_first_search(init_state: List, goal_state: List):
     t0 = time.time()
     goal_state = tuple([tuple(row) for row in goal_state])
-    # Breadth-first Search
     print("Running Breadth-first Search...")
     visited = set[tuple]()
-    path = []
 
     q = Queue[PuzzleNode]()
     q.put(PuzzleNode(None, None, init_state))
