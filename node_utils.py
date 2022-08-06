@@ -10,7 +10,7 @@ def state_to_tuple(state: List):
     return tuple(tuples)
 
 
-def backtrack_actions(goal_node:PuzzleNode, visited_nodes:Set):
+def backtrack_actions(goal_node: PuzzleNode, visited_nodes: Set, print_progress: bool = False):
     print("Visited nodes:", len(visited_nodes))
     if goal_node is not None:
         seq = [goal_node]
@@ -24,9 +24,10 @@ def backtrack_actions(goal_node:PuzzleNode, visited_nodes:Set):
         seq.reverse()
         print("Number of actions:", len(seq) - 1)
         # print("Total cost:", goal_node.total_cost)
-        print("\nSOLUTION:\n")
-        for s in seq:
-            s.print()
+        if print_progress:
+            print("\nSOLUTION:\n")
+            for s in seq:
+                s.print()
 
         return seq
     else:

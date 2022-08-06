@@ -27,11 +27,6 @@ def breadth_first_search(init_state: List, goal_state: List):
             if state_to_tuple(new_state) not in visited:
                 q.put(PuzzleNode(node, action, new_state))
 
-        # children = node.get_children()
-        # for succ in children:
-        #     if succ not in visited:
-        #         q.put(succ)
-
     if q.empty():
         node = None
 
