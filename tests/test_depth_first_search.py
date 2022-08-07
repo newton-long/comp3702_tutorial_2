@@ -104,3 +104,18 @@ class TestDepthFirstSearch(unittest.TestCase):
         )
         steps = depth_first_search(init_state, goal_state)
         self.assertEqual(81963, len(steps))
+
+    def test_unsolvable(self):
+        init_state = (
+            (1, 2, 3),
+            (4, 5, 6),
+            (-1, 8, 7)
+        )
+        goal_state = (
+            (1, 2, 3),
+            (4, 5, 6),
+            (7, 8, -1)
+        )
+
+        steps = depth_first_search(init_state, goal_state)
+        self.assertEqual(0, len(steps))

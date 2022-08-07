@@ -27,6 +27,10 @@ def depth_first_search(init_state: Tuple[Tuple[int]], goal_state: Tuple[Tuple[in
             new_state = node.step(action)
             if new_state not in visited:
                 stack.append(PuzzleNode(node, action, new_state))
+
+    if not stack:
+        node = None
+
     t_dfs = (time.time() - t0) / 1
     print(f'Finished in {t_dfs}s')
 
