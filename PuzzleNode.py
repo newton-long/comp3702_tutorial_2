@@ -18,7 +18,7 @@ actions = {
 
 class PuzzleNode:
 
-    def __init__(self, parent: Optional[PuzzleNode], action: int, current_state: List[List[int]]):
+    def __init__(self, parent: Optional[PuzzleNode], action: Optional[int], current_state: List[List[int]]):
         self.parent = parent
         self.action = action
         self.current_state = tuple([tuple(row) for row in current_state])
