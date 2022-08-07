@@ -104,3 +104,18 @@ class TestBreadthFirstSearch(unittest.TestCase):
         )
         steps = breadth_first_search(init_state, goal_state)
         self.assertEqual(13, len(steps))
+
+    def test_unsolvable(self):
+        init_state = (
+            (1, 2, 3),
+            (4, 5, 6),
+            (-1, 8, 7)
+        )
+        goal_state = (
+            (1, 2, 3),
+            (4, 5, 6),
+            (7, 8, -1)
+        )
+
+        steps = breadth_first_search(init_state, goal_state)
+        self.assertEqual(0, len(steps))
