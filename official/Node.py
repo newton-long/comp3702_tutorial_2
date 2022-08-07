@@ -70,6 +70,23 @@ class Node:
 
         return children
 
+    # Returns cost of making an action
+    def get_cost(self):
+        if (self.previous_action == 'U'):
+            return 1
+        elif (self.previous_action == 'D'):
+            return 2
+        elif (self.previous_action == 'L'):
+            return 3
+        elif (self.previous_action == 'R'):
+            return 4
+        else:
+            raise Exception("Invalid action: {}".format(self.action))
+
+    # Override less than function for UCS
+    def __lt__(self, other):
+        return self.total_cost < other.total_cost
+
 
 def backtrack_actions(goal_node, visited_nodes, print_solution = False):
     print("Visited nodes:", len(visited_nodes))

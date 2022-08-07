@@ -25,15 +25,18 @@ def backtrack_actions(goal_node: PuzzleNode, visited_nodes: Set, print_progress:
     if goal_node is not None:
         seq = [goal_node]
         node = goal_node
+        total_cost = node.cost
+
         # Initial node has no parent
         while node.parent:
             seq.append(node.parent)
+            total_cost += node.parent.cost
             node = node.parent
 
         # Reverse it to get the correct order
         seq.reverse()
         print("Number of actions:", len(seq) - 1)
-        # print("Total cost:", goal_node.total_cost)
+        print("Total cost:", total_cost)
         if print_progress:
             print("\nSOLUTION:\n")
             for s in seq:

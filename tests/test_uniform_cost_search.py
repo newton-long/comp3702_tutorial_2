@@ -44,4 +44,4 @@ class TestUniformCostSearch(unittest.TestCase):
             (7, 8, -1)
         )
         steps = uniform_cost_search(init_state, goal_state)
-        self.assertEqual(20, len(steps))
+        self.assertEqual(68, len(steps))
