@@ -4,8 +4,21 @@ from __future__ import annotations
 import copy
 from typing import List
 
+LEFT = 0
+RIGHT = 1
+UP = 2
+DOWN = 3
+
+actions = {
+    LEFT: 'L',
+    RIGHT: 'R',
+    UP: 'U',
+    DOWN: 'D'
+}
+
 
 class PuzzleNode:
+
     def __init__(self, parent: PuzzleNode|None, action, current_state: List):
         self.parent = parent
         self.action = action
@@ -24,43 +37,43 @@ class PuzzleNode:
         actions = []
 
         if self.blank_col > 0:
-            actions.append('L')
+            actions.append(LEFT)
         if self.blank_col < self.last_col:
-            actions.append('R')
+            actions.append(RIGHT)
         if self.blank_row > 0:
-            actions.append('U')
+            actions.append(UP)
         if self.blank_row < self.last_row:
-            actions.append('D')
+            actions.append(DOWN)
 
         return actions
 
     def step(self, action):
         new_state = list(list(row) for row in self.current_state)
 
-        if self.blank_row == 0 and action == 'U' \
-            or self.blank_row == self.last_row and action == 'D' \
-            or self.blank_col == 0 and action == 'L' \
-            or self.blank_col == self.last_col and action == 'R':
+        if self.blank_row == 0 and action == UP \
+            or self.blank_row == self.last_row and action == DOWN \
+            or self.blank_col == 0 and action == LEFT \
+            or self.blank_col == self.last_col and action == RIGHT:
             raise Exception('Fell off the grid!')
 
-        if action == 'U':
+        if action == UP:
             new_state[self.blank_row][self.blank_col] = new_state[self.blank_row - 1][self.blank_col]
             new_state[self.blank_row - 1][self.blank_col] = -1
-        elif action == 'D':
+        elif action == DOWN:
             new_state[self.blank_row][self.blank_col] = new_state[self.blank_row + 1][self.blank_col]
             new_state[self.blank_row + 1][self.blank_col] = -1
-        elif action == 'L':
+        elif action == LEFT:
             new_state[self.blank_row][self.blank_col] = new_state[self.blank_row][self.blank_col - 1]
             new_state[self.blank_row][self.blank_col - 1] = -1
-        elif action == 'R':
+        elif action == RIGHT:
             new_state[self.blank_row][self.blank_col] = new_state[self.blank_row][self.blank_col + 1]
             new_state[self.blank_row][self.blank_col + 1] = -1
 
         return new_state
 
     def print(self):
-        print(f'Action taken: {self.action}' )
+        print(f'Action taken: {actions[self.action]}' )
         for row in self.current_state:
             print(' '.join([str(item) for item in row]))
-        print("\n")
+        print("\n\n")
 
