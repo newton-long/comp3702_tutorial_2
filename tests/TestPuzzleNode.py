@@ -11,7 +11,7 @@ class TestPuzzleNode(unittest.TestCase):
             (7, 8, -1)
         ))
 
-    def test_find_empty(self):
+    def test_find_blank(self):
         self.assertEqual((2, 2), self.bottom_left.find_blank())
 
     def test_find_actions_bottom_right(self):
