@@ -25,10 +25,10 @@ costs.setdefault(0)
 
 class PuzzleNode:
 
-    def __init__(self, parent: Optional[PuzzleNode], action: Optional[int], current_state: List[List[int]]):
+    def __init__(self, parent: Optional[PuzzleNode], action: Optional[int], current_state: Tuple[Tuple[int]]):
         self.parent = parent
         self.action = action
-        self.current_state = tuple([tuple(row) for row in current_state])
+        self.current_state = current_state
 
         self.blank_col, self.blank_row = self.find_blank()
         self.last_col = len(current_state) - 1
@@ -55,7 +55,7 @@ class PuzzleNode:
 
         return actions
 
-    def step(self, action: int) -> List[List[int]]:
+    def step(self, action: int) -> Tuple[Tuple[int]]:
         new_state = list(list(row) for row in self.current_state)
 
         if self.blank_row == 0 and action == UP \
@@ -77,7 +77,7 @@ class PuzzleNode:
             new_state[self.blank_row][self.blank_col] = new_state[self.blank_row][self.blank_col + 1]
             new_state[self.blank_row][self.blank_col + 1] = -1
 
-        return new_state
+        return tuple([tuple(row) for row in new_state])
 
     def print(self):
         print(f'Action taken: {actions[self.action]}' )

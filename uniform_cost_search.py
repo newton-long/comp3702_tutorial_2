@@ -6,7 +6,7 @@ from PuzzleNode import PuzzleNode
 from node_utils import backtrack_actions, state_to_tuple
 
 
-def uniform_cost_search(init_state: List[List[int]], goal_state: List[List[int]]):
+def uniform_cost_search(init_state: Tuple[Tuple[int]], goal_state: Tuple[Tuple[int]]):
     t0 = time.time()
     goal_state = tuple([tuple(row) for row in goal_state])
     print("Running Uniform-cost Search...")
@@ -23,11 +23,11 @@ def uniform_cost_search(init_state: List[List[int]], goal_state: List[List[int]]
 
         for action in node.actions():
             new_state = node.step(action)
-            if state_to_tuple(new_state) not in visited:
+            if new_state not in visited:
+                visited.add(new_state)
+
                 new_node = PuzzleNode(node, action, new_state)
                 new_node.cost += node.cost
-
-                visited.add(new_node.current_state)
 
                 heapq.heappush(heap, new_node)
 

@@ -6,9 +6,9 @@ from PuzzleNode import PuzzleNode
 from node_utils import backtrack_actions, state_to_tuple
 
 
-def breadth_first_search(init_state: List[List[int]], goal_state: List[List[int]]):
+def breadth_first_search(init_state: Tuple[Tuple[int]], goal_state: Tuple[Tuple[int]]):
     t0 = time.time()
-    goal_state = tuple([tuple(row) for row in goal_state])
+    goal_state = goal_state
     print("Running Breadth-first Search...")
     visited = set[Tuple]()
 
@@ -22,11 +22,10 @@ def breadth_first_search(init_state: List[List[int]], goal_state: List[List[int]
             print("We reached the goal!")
             break
 
-        visited.add(node.current_state)
-
         for action in node.actions():
             new_state = node.step(action)
-            if state_to_tuple(new_state) not in visited:
+            if new_state not in visited:
+                visited.add(new_state)
                 q.put(PuzzleNode(node, action, new_state))
 
     if q.empty():
