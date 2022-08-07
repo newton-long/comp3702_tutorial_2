@@ -15,6 +15,13 @@ actions = {
     DOWN: 'D'
 }
 
+costs = {
+    UP: 1,
+    DOWN: 2,
+    LEFT: 3,
+    RIGHT: 4
+}
+costs.setdefault(0)
 
 class PuzzleNode:
 
@@ -26,6 +33,8 @@ class PuzzleNode:
         self.blank_col, self.blank_row = self.find_blank()
         self.last_col = len(current_state) - 1
         self.last_row = len(current_state[0]) - 1
+
+        self.cost = costs.get(action, 0)
 
     def find_blank(self) -> Tuple[int, int]:
         for index, row in enumerate(self.current_state):
@@ -76,3 +85,5 @@ class PuzzleNode:
             print(' '.join([str(item) for item in row]))
         print("\n\n")
 
+    def __lt__(self, other: PuzzleNode):
+        return self.cost < other.cost
