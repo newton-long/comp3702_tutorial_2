@@ -17,6 +17,7 @@ def breadth_first_search(init_state: List[List[int]], goal_state: List[List[int]
 
     while not q.empty():
         node = q.get()
+
         if node.current_state == goal_state:
             print("We reached the goal!")
             break

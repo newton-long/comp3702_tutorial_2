@@ -1,4 +1,5 @@
 import time
+from collections import deque
 from typing import List, Tuple
 
 from PuzzleNode import PuzzleNode
@@ -11,11 +12,11 @@ def depth_first_search(init_state: List[List[int]], goal_state: List[List[int]])
     print("Running Depth-first Search...")
     visited = set[Tuple]()
 
-    q = list[PuzzleNode]()
-    q.append(PuzzleNode(None, None, init_state))
+    stack = deque[PuzzleNode]()
+    stack.append(PuzzleNode(None, None, init_state))
 
-    while q:
-        node = q.pop()
+    while stack:
+        node = stack.pop()
         if node.current_state == goal_state:
             print("We reached the goal!")
             break
@@ -25,7 +26,7 @@ def depth_first_search(init_state: List[List[int]], goal_state: List[List[int]])
         for action in node.actions():
             new_state = node.step(action)
             if state_to_tuple(new_state) not in visited:
-                q.append(PuzzleNode(node, action, new_state))
+                stack.append(PuzzleNode(node, action, new_state))
     t_dfs = (time.time() - t0) / 1
     print(f'Finished in {t_dfs}s')
 
