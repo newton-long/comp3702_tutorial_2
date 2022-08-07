@@ -1,8 +1,7 @@
 # State representation
 from __future__ import annotations
 
-import copy
-from typing import List
+from typing import List, Tuple, Optional
 
 LEFT = 0
 RIGHT = 1
@@ -19,7 +18,7 @@ actions = {
 
 class PuzzleNode:
 
-    def __init__(self, parent: PuzzleNode|None, action, current_state: List):
+    def __init__(self, parent: Optional[PuzzleNode], action: int, current_state: List[List[int]]):
         self.parent = parent
         self.action = action
         self.current_state = tuple([tuple(row) for row in current_state])
@@ -28,13 +27,13 @@ class PuzzleNode:
         self.last_col = len(current_state) - 1
         self.last_row = len(current_state[0]) - 1
 
-    def find_blank(self):
+    def find_blank(self) -> Tuple[int, int]:
         for index, row in enumerate(self.current_state):
             if -1 in row:
                 return row.index(-1), index
 
-    def actions(self):
-        actions = []
+    def actions(self) -> List[int]:
+        actions = list[int]()
 
         if self.blank_col > 0:
             actions.append(LEFT)
@@ -47,7 +46,7 @@ class PuzzleNode:
 
         return actions
 
-    def step(self, action):
+    def step(self, action: int) -> List[List[int]]:
         new_state = list(list(row) for row in self.current_state)
 
         if self.blank_row == 0 and action == UP \
