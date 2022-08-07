@@ -20,8 +20,8 @@ def breadth_first_search(init_state: List[List[int]], goal_state: List[List[int]
         if node.current_state == goal_state:
             print("We reached the goal!")
             break
-        if node.current_state not in visited:
-            visited.add(node.current_state)
+
+        visited.add(node.current_state)
 
         for action in node.actions():
             new_state = node.step(action)
