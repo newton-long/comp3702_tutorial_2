@@ -1,9 +1,7 @@
 # Tutorial 02
 ## Breadth First Search, Depth First Search and Uniform Cost Search
 
-Loosely based on [Tutorial_2_solution.py](official/Tutorial_2_solutions.py.txt).
-
-The original solutions are in [official](official) folder.
+Loosely based on official solutions that will be released later in the week.
 
 The main differences to the other solutions:
 
