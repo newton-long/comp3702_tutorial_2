@@ -26,7 +26,11 @@ def uniform_cost_search(init_state: Tuple[Tuple[int]], goal_state: Tuple[Tuple[i
             if new_state not in visited:
                 visited.add(new_state)
 
-                heapq.heappush(heap, PuzzleNode(node, action, new_state))
+                new_node = PuzzleNode(node, action, new_state)
+                new_node.cost += node.cost
+
+                heapq.heappush(heap, new_node)
+                # heapq.heappush(heap, PuzzleNode(node, action, new_state))
 
     t_dfs = (time.time() - t0) / 1
     print(f'Finished in {t_dfs}s')
