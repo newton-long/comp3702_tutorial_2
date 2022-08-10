@@ -8,7 +8,6 @@ from node_utils import backtrack_actions, state_to_tuple
 
 def breadth_first_search(init_state: Tuple[Tuple[int]], goal_state: Tuple[Tuple[int]]):
     t0 = time.time()
-    goal_state = goal_state
     print("Running Breadth-first Search...")
     visited = set[Tuple]()
 

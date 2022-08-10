@@ -25,7 +25,7 @@ costs.setdefault(0)
 
 class PuzzleNode:
 
-    def __init__(self, parent: Optional[PuzzleNode], action: Optional[int], current_state: Tuple[Tuple[int]]):
+    def __init__(self, parent: Optional[PuzzleNode], action: Optional[int], current_state: Tuple[Tuple[int, ...], ...]):
         self.parent = parent
         self.action = action
         self.current_state = current_state
