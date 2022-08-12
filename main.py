@@ -17,6 +17,7 @@ if __name__ == '__main__':
     steps = depth_first_search(init_state, goal_state)
 
     # this will use over 60GB of memory...
+    # see Tutorial 3 for solution to 15-puzzle
     # init_state = (
     #     (9, 2, 1, 4),
     #     (6, 13, 8, 14),
