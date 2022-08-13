@@ -37,9 +37,9 @@ class PuzzleNode:
         self.cost = costs.get(action, 0)
 
     def find_blank(self) -> Tuple[int, int]:
-        for index, row in enumerate(self.current_state):
+        for row_index, row in enumerate(self.current_state):
             if -1 in row:
-                return row.index(-1), index
+                return row_index, row.index(-1)
 
     def actions(self) -> List[int]:
         actions = list[int]()

@@ -14,6 +14,14 @@ class TestPuzzleNode(unittest.TestCase):
     def test_find_blank(self):
         self.assertEqual((2, 2), self.bottom_left.find_blank())
 
+    def test_find_blank_not_equal(self):
+        node = PuzzleNode(None, None, (
+            (1, -1, 3),
+            (4, 5, 6),
+            (7, 8, 2)
+        ))
+        self.assertEqual((0, 1), node.find_blank())
+
     def test_find_actions_bottom_right(self):
         self.assertEqual(
             [LEFT, UP],
