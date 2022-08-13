@@ -30,7 +30,7 @@ class PuzzleNode:
         self.action = action
         self.current_state = current_state
 
-        self.blank_col, self.blank_row = self.find_blank()
+        self.blank_row, self.blank_col = self.find_blank()
         self.last_col = len(current_state) - 1
         self.last_row = len(current_state[0]) - 1
 
